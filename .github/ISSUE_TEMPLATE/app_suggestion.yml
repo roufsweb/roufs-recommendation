@@ -1,55 +1,55 @@
-name: Suggest an App
-description: Recommend a new iOS app to be added to the directory.
-title: "[App Suggestion]: <App Name>"
-labels: ["enhancement", "app suggestion"]
+name: Suggest a Recommendation
+description: Recommend a mobile app, cross-platform tool, networking solution, or web resource.
+title: "[Recommendation]: <Name>"
+labels: ["enhancement", "recommendation"]
 body:
   - type: input
-    id: app_name
+    id: item_name
     attributes:
-      label: App Name
-      description: What is the exact name of the app?
-      placeholder: e.g., Snapseed
+      label: Name
+      description: What is the exact name of the app, tool, or resource?
+      placeholder: e.g., LocalSend, aaPanel
     validations:
       required: true
   - type: input
-    id: app_link
+    id: item_link
     attributes:
-      label: App Store Link
-      description: Please provide the official Apple App Store link.
-      placeholder: https://apps.apple.com/...
+      label: Official Link
+      description: Please provide the official website, GitHub repo, or App Store link.
+      placeholder: https://...
     validations:
       required: true
   - type: dropdown
     id: category
     attributes:
       label: Category
-      description: Which category does this app fit into?
+      description: Which section does this recommendation belong to?
       options:
-        - Entertainment (Movies, TV)
-        - Music & Audio
-        - Productivity
-        - Photo & Video
-        - Utilities & Tools
-        - Privacy & Security
-        - Other (Specify in description)
+        - iOS Application
+        - Cross-Platform File Transfer
+        - Remote Access & Zero Trust VPN
+        - Homelab, Server & Router OS
+        - Web Resource & Media Index
+        - Other
     validations:
       required: true
   - type: dropdown
     id: pricing
     attributes:
       label: Pricing Model
-      description: Is it completely free, ad-supported, or freemium?
+      description: Is it completely free, open source, or freemium?
       options:
-        - Completely Free
+        - Free & Open Source (FOSS)
+        - 100% Free
         - Free with Ads
-        - Freemium (In-App Purchases)
+        - Freemium (Generous Free Tier)
     validations:
       required: true
   - type: textarea
     id: description
     attributes:
-      label: Why should we add this app?
-      description: Provide a brief description of the app and what makes it awesome or a great alternative to a premium service.
-      placeholder: It's a great free alternative to...
+      label: Why do you recommend it?
+      description: Provide a concise description of why this tool is exceptional.
+      placeholder: It's the best free alternative because...
     validations:
       required: true
