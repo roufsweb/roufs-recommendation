@@ -37,6 +37,7 @@
   const backToTopBtn = document.getElementById('back-to-top');
 
   let toastTimeout = null;
+  const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 24 24' fill='none' stroke='%230284c7' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' ry='5'/%3E%3Cpath d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'/%3E%3Cline x1='17.5' y1='6.5' x2='17.51' y2='6.5'/%3E%3C/svg%3E";
 
   function escapeRegex(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -180,7 +181,7 @@
 
       tile.innerHTML = `
         <div class="tile-icon-wrap">
-          <img src="${escapeHtml(app.icon)}" alt="${escapeHtml(app.title)} Icon" class="tile-icon" loading="lazy">
+          <img src="${escapeHtml(app.icon || fallbackSvg)}" onerror="this.onerror=null;this.src='${fallbackSvg}'" alt="${escapeHtml(app.title)} Icon" class="tile-icon" loading="lazy">
         </div>
         <div class="tile-info">
           <h3 class="tile-title">${escapeHtml(app.title)}</h3>
@@ -268,7 +269,8 @@
     const app = data.apps.find(a => a.id === appId);
     if (!app) return;
 
-    modalIcon.src = app.icon;
+    modalIcon.onerror = function() { this.src = fallbackSvg; };
+    modalIcon.src = app.icon || fallbackSvg;
     modalIcon.alt = `${app.title} Icon`;
     modalTitle.textContent = app.title;
     modalSubcategory.textContent = `${app.category} • ${app.subcategory}`;

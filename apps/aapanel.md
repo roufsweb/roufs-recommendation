@@ -1,6 +1,6 @@
 # aaPanel
 
-<img src="https://www.aapanel.com/static/images/logo.png" width="160" alt="aaPanel Logo">
+<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/aapanel.png" width="100" style="border-radius:20px;" alt="aaPanel Logo">
 
 **Category:** Web Hosting Control Panels (cPanel Alternative)  
 **Platforms:** Linux (Ubuntu, Debian, AlmaLinux, Rocky Linux, CentOS)  

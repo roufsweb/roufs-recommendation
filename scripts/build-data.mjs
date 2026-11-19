@@ -14,6 +14,7 @@ const sectionMapping = {
   'snapseed': { section: 'ios', category: 'Photo Editing', subcategory: '1.3 Photo & Video Creation' },
   'vllo': { section: 'ios', category: 'Video Editing', subcategory: '1.3 Photo & Video Creation' },
   'ish-shell': { section: 'ios', category: 'Developer & Terminal', subcategory: '1.4 Terminal & Developer Tools' },
+  'rootshell': { section: 'ios', category: 'Developer & Terminal', subcategory: '1.4 Terminal & Developer Tools' },
   'potatso': { section: 'ios', category: 'Network & Proxy', subcategory: '1.5 Proxy & Network Utilities' },
   'dnsecure': { section: 'ios', category: 'Network & DNS', subcategory: '1.5 Proxy & Network Utilities' },
   'lap': { section: 'cross-platform', category: 'Photo Management', subcategory: 'Cross-Platform Tools & Utilities' },

@@ -75,6 +75,7 @@ A curated collection of top-tier iOS apps directly available on the official App
 | Icon | App Name | Key Capabilities | Pricing | Links |
 | :---: | :--- | :--- | :---: | :---: |
 | [<img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/7a/78/e3/7a78e31a-10c7-f56e-822d-c1edf05d66e2/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/100x100bb.jpg" width="50" style="border-radius:10px;" alt="iSH Shell">](https://apps.apple.com/us/app/ish-shell/id1436902243) | **iSH Shell** | The premier Termux alternative for iOS. Emulates an x86 Alpine Linux environment locally with the `apk` package manager, Python, Git, curl, SSH, and iOS Files app mounting. | Free & Open Source | [App Store](https://apps.apple.com/us/app/ish-shell/id1436902243)<br>[Documentation](apps/ish-shell.md) |
+| [<img src="https://raw.githubusercontent.com/kitknox/rootshell/main/icon.png" width="50" style="border-radius:10px;" alt="rootshell">](https://apps.apple.com/app/rootshell-local-terminal-ssh/id6755794662) | **rootshell** | Metal GPU-accelerated terminal powered by libghostty. Native SSH with post-quantum crypto, Mosh-compatible roaming, tmux control mode, and SSH VPN tunneling. | Free & Open Source | [App Store](https://apps.apple.com/app/rootshell-local-terminal-ssh/id6755794662)<br>[Website](https://www.rootshell.com)<br>[Documentation](apps/rootshell.md) |
 
 ---
 
@@ -115,8 +116,8 @@ Modular web-based server management tools and optimized network routing operatin
 
 | Visual | System Name | Scope | Key Capabilities | Pricing | Links |
 | :---: | :--- | :--- | :--- | :---: | :---: |
-| [<img src="https://www.aapanel.com/static/images/logo.png" width="90" alt="aaPanel">](https://www.aapanel.com) | **aaPanel** | Server Hosting Control Panel | The best free cPanel alternative. Provides a modular web GUI for 1-click LAMP/LNMP deployment, database management, automated Let's Encrypt SSL, Docker extensions, and file management. | Free Core Tier | [Website](https://www.aapanel.com)<br>[GitHub](https://github.com/aaPanel/aaPanel)<br>[Documentation](apps/aapanel.md) |
-| **ImmortalWrt** | **ImmortalWrt** | Embedded Router OS (OpenWrt Fork) | Highly optimized OpenWrt fork with superior out-of-the-box package support, updated kernel drivers, and enhanced LuCI themes. Excels on x86 mini PCs and modern routers. | Free & Open Source | [Website](https://immortalwrt.org)<br>[GitHub](https://github.com/immortalwrt/immortalwrt)<br>[Documentation](apps/immortalwrt.md) |
+| [<img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/aapanel.png" width="50" style="border-radius:10px;" alt="aaPanel">](https://www.aapanel.com) | **aaPanel** | Server Hosting Control Panel | The best free cPanel alternative. Provides a modular web GUI for 1-click LAMP/LNMP deployment, database management, automated Let's Encrypt SSL, Docker extensions, and file management. | Free Core Tier | [Website](https://www.aapanel.com)<br>[GitHub](https://github.com/aaPanel/aaPanel)<br>[Documentation](apps/aapanel.md) |
+| [<img src="https://avatars.githubusercontent.com/u/53193414?s=200&v=4" width="50" style="border-radius:10px;" alt="ImmortalWrt">](https://immortalwrt.org) | **ImmortalWrt** | Embedded Router OS (OpenWrt Fork) | Highly optimized OpenWrt fork with superior out-of-the-box package support, updated kernel drivers, and enhanced LuCI themes. Excels on x86 mini PCs and modern routers. | Free & Open Source | [Website](https://immortalwrt.org)<br>[GitHub](https://github.com/immortalwrt/immortalwrt)<br>[Documentation](apps/immortalwrt.md) |
 
 ---
 
@@ -124,9 +125,9 @@ Modular web-based server management tools and optimized network routing operatin
 
 Authoritative, community-maintained web indexes that systematically catalog and benchmark high-traffic media portals.
 
-| Index Name | Primary Scope | Evaluation Criteria | Coverage | Links |
-| :--- | :--- | :--- | :--- | :---: |
-| **EverythingMoe** | Anime Streaming & Media Index | Video resolution, streaming uptime, subtitle quality, and ad intrusiveness. | Streaming portals, torrent trackers, direct download archives, manga readers, light novels. | [Portal Website](https://everythingmoe.com)<br>[Documentation](apps/everythingmoe.md) |
+| Visual | Index Name | Primary Scope | Evaluation Criteria | Coverage | Links |
+| :---: | :--- | :--- | :--- | :--- | :---: |
+| [<img src="https://everythingmoe.com/apple-icon-180x180.png" width="50" style="border-radius:10px;" alt="EverythingMoe">](https://everythingmoe.com) | **EverythingMoe** | Anime Streaming & Media Index | Video resolution, streaming uptime, subtitle quality, and ad intrusiveness. | Streaming portals, torrent trackers, direct download archives, manga readers, light novels. | [Portal Website](https://everythingmoe.com)<br>[Documentation](apps/everythingmoe.md) |
 
 ---
 

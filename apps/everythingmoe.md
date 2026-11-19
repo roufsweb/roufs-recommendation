@@ -1,5 +1,7 @@
 # EverythingMoe
 
+<img src="https://everythingmoe.com/apple-icon-180x180.png" width="100" style="border-radius:20px;" alt="EverythingMoe Logo">
+
 **Category:** Web Resources & Anime Media Index  
 **Platform:** Web (Browser-Accessible)  
 **Pricing:** 100% Free / Community-Maintained  

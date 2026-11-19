@@ -1,5 +1,7 @@
 # ImmortalWrt
 
+<img src="https://avatars.githubusercontent.com/u/53193414?s=200&v=4" width="100" style="border-radius:20px;" alt="ImmortalWrt Logo">
+
 **Category:** Router Firmware & Networking OS (Enhanced OpenWrt Fork)  
 **Platforms:** x86/64 Mini PCs, Soft Routers, ARM SBCs, Wi-Fi Routers  
 **Pricing:** Free & Open Source (GPL-2.0)  

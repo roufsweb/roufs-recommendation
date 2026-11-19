@@ -4,7 +4,7 @@ window.ROUFS_DATA = {
   {
     "id": "aapanel",
     "title": "aaPanel",
-    "icon": "https://www.aapanel.com/static/images/logo.png",
+    "icon": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/aapanel.png",
     "section": "homelab",
     "category": "Server Control Panel",
     "subcategory": "Homelab & Server OS",
@@ -184,7 +184,7 @@ window.ROUFS_DATA = {
   {
     "id": "everythingmoe",
     "title": "EverythingMoe",
-    "icon": "",
+    "icon": "https://everythingmoe.com/apple-icon-180x180.png",
     "section": "web-indices",
     "category": "Media & Anime Directory",
     "subcategory": "Web Media Indices",
@@ -221,7 +221,7 @@ window.ROUFS_DATA = {
   {
     "id": "immortalwrt",
     "title": "ImmortalWrt",
-    "icon": "",
+    "icon": "https://avatars.githubusercontent.com/u/53193414?s=200&v=4",
     "section": "homelab",
     "category": "Router Firmware & OS",
     "subcategory": "Homelab & Server OS",
@@ -542,6 +542,63 @@ window.ROUFS_DATA = {
       {
         "label": "Minimalist Interface",
         "text": "Reduces feed clutter, hides algorithmic distractions, and focuses purely on high-resolution video playback."
+      }
+    ]
+  },
+  {
+    "id": "rootshell",
+    "title": "rootshell",
+    "icon": "https://raw.githubusercontent.com/kitknox/rootshell/main/icon.png",
+    "section": "ios",
+    "category": "Developer & Terminal",
+    "subcategory": "1.4 Terminal & Developer Tools",
+    "platforms": [
+      "iOS",
+      "iPadOS",
+      "macOS",
+      "visionOS"
+    ],
+    "pricing": "Free & Open Source (MIT)",
+    "pricingType": "foss",
+    "links": [
+      {
+        "label": "App Store Listing",
+        "url": "https://apps.apple.com/app/rootshell-local-terminal-ssh/id6755794662"
+      },
+      {
+        "label": "Official Website",
+        "url": "https://www.rootshell.com"
+      },
+      {
+        "label": "GitHub Repository",
+        "url": "https://github.com/kitknox/rootshell"
+      }
+    ],
+    "overview": "rootshell is a premier open-source, desktop-class terminal emulator and remote access suite for Apple platforms. Powered by libghostty with direct Metal GPU acceleration, it combines a blazing-fast local shell, native SSH with post-quantum cryptography, seamless Mosh-compatible roaming, tmux control mode, and full SSH VPN tunneling completely free without subscriptions or ads.",
+    "features": [
+      {
+        "label": "Metal GPU Acceleration",
+        "text": "Direct Metal rendering powered by libghostty's Zig engine delivers 120 FPS synchronized output, zero-flicker scrolling, and full mouse capture for tmux, vim, and zellij."
+      },
+      {
+        "label": "Native SSH & Post-Quantum Security",
+        "text": "High-performance Swift SSH engine supporting Ed25519, Secure Enclave biometric key storage, ML-KEM/ML-DSA post-quantum key exchange, jump hosts, and agent forwarding."
+      },
+      {
+        "label": "Rootshell Roam & tssh Protocols",
+        "text": "Mosh-compatible roaming that seamlessly survives Wi-Fi/cellular handoffs and sleep states, alongside QUIC and KCP transports for low-latency connections."
+      },
+      {
+        "label": "Native Tmux Control Mode",
+        "text": "Attach via `tmux -CC` to automatically convert remote tmux windows into native iOS tabs and splits with full touch and gesture support."
+      },
+      {
+        "label": "Built-in SSH VPN Tunneling",
+        "text": "Route full device network traffic through any remote SSH server with zero server-side daemon setup required."
+      },
+      {
+        "label": "Sandboxed Local Shell & Git",
+        "text": "Built-in local shell with curl, jq, vim, and native Git client on iOS/iPadOS, and full local shell execution on macOS."
       }
     ]
   },
