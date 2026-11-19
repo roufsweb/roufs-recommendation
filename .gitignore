@@ -1,0 +1,5 @@
+node_modules/
+*.png
+!apps/*
+.DS_Store
+Thumbs.db

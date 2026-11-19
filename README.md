@@ -1,12 +1,15 @@
 # Rouf's Recommendations
 
 <p align="center">
+  <a href="https://recomendation.roufsweb.com"><img alt="Live Web Catalog" src="https://img.shields.io/badge/Live_Catalog-recomendation.roufsweb.com-0284c7?style=flat-square"></a>
   <img alt="Directory Code Size" src="https://img.shields.io/github/languages/code-size/roufsweb/roufs-recommendation?color=0969da&style=flat-square">
   <a href="https://github.com/roufsweb/roufs-recommendation/issues"><img alt="Issues" src="https://img.shields.io/github/issues/roufsweb/roufs-recommendation?color=1a7f37&style=flat-square"></a>
   <a href="https://github.com/roufsweb/roufs-recommendation/pulls"><img alt="Pull Requests" src="https://img.shields.io/github/issues-pr/roufsweb/roufs-recommendation?color=8250df&style=flat-square"></a>
   <a href="https://github.com/roufsweb/roufs-recommendation/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/roufsweb/roufs-recommendation?color=bf8700&style=flat-square"></a>
   <img alt="License" src="https://img.shields.io/badge/License-MIT-blue?style=flat-square">
 </p>
+
+> **Live Web Directory:** Browse our responsive, mobile-optimized catalog with instant search, category filtering, and setup guides at [recomendation.roufsweb.com](https://recomendation.roufsweb.com).
 
 An authoritative, community-driven master catalog of vetted recommendations across mobile applications, cross-platform tools, Zero Trust networking, homelab infrastructure, and curated web indices.
 
