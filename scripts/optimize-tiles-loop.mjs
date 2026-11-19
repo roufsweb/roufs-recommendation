@@ -183,7 +183,7 @@ async function main() {
     console.log('🏆 OPTIMIZATION SUMMARY');
     console.log('======================================================');
     console.log(`- Hero section eliminated: ${!slipReport.hasHeroSection}`);
-    console.log(`- All 17 app tiles rendered directly: ${slipReport.tilesCount === 17}`);
+    console.log(`- All 18 app tiles rendered directly: ${slipReport.tilesCount === 18}`);
     console.log(`- Zero horizontal overflow on 320px Slip Phone: ${!slipReport.hasHorizontalOverflow}`);
     console.log(`- Zero horizontal overflow on Desktop: ${!deskReport.hasHorizontalOverflow}`);
     console.log(`- Modal / Sheet interaction verified: ${slipReport.modalInteractionTested}`);

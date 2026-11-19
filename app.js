@@ -12,7 +12,6 @@
 
   // DOM Elements
   const tilesGrid = document.getElementById('tiles-grid');
-  const guidesGrid = document.getElementById('guides-grid');
   const searchInput = document.getElementById('search-input');
   const searchClearBtn = document.getElementById('search-clear-btn');
   const categoryTabs = document.getElementById('category-tabs');
@@ -47,7 +46,6 @@
   function init() {
     updateCategoryCounts();
     renderTiles();
-    renderGuides();
     bindEvents();
     checkUrlHash();
   }
@@ -206,64 +204,6 @@
     tilesGrid.appendChild(frag);
   }
 
-  // Render Technical Guides
-  function renderGuides() {
-    guidesGrid.innerHTML = '';
-    const frag = document.createDocumentFragment();
-
-    data.guides.forEach(guide => {
-      const card = document.createElement('article');
-      card.className = 'guide-card';
-      card.id = guide.id;
-
-      let stepsHtml = '';
-      guide.steps.forEach(s => {
-        stepsHtml += `
-          <li class="guide-step-item">
-            <span class="guide-step-number">${s.step}</span>
-            <div style="flex: 1;">
-              <div>${s.text}</div>
-              ${s.code ? `
-                <div class="code-block-wrapper">
-                  <button type="button" class="copy-code-btn" data-code="${escapeHtml(s.code)}" aria-label="Copy command">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                      <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                    </svg>
-                    Copy
-                  </button>
-                  <code>${escapeHtml(s.code)}</code>
-                </div>
-              ` : ''}
-            </div>
-          </li>
-        `;
-      });
-
-      card.innerHTML = `
-        <span class="guide-pill">${escapeHtml(guide.badge)} &middot; ${escapeHtml(guide.category)}</span>
-        <h3 class="guide-name">${escapeHtml(guide.title)}</h3>
-        <p class="guide-summary">${escapeHtml(guide.summary)}</p>
-        <ul class="guide-steps-list">
-          ${stepsHtml}
-        </ul>
-      `;
-
-      frag.appendChild(card);
-    });
-
-    guidesGrid.appendChild(frag);
-
-    // Bind copy buttons
-    guidesGrid.querySelectorAll('.copy-code-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const code = btn.getAttribute('data-code');
-        copyToClipboard(code);
-      });
-    });
-  }
-
   // Open Details Modal / Sheet
   function openModal(appId) {
     const app = data.apps.find(a => a.id === appId);
@@ -285,7 +225,7 @@
       ${app.platforms.map(p => `<span class="badge badge-free">${escapeHtml(p)}</span>`).join('')}
     `;
 
-    // Body
+    // Key Capabilities
     let featuresHtml = '';
     if (app.features.length > 0) {
       featuresHtml = `
@@ -300,11 +240,57 @@
       `;
     }
 
+    // Embedded Setup Guide (if present for this service)
+    let guideHtml = '';
+    if (app.guide) {
+      const stepsHtml = app.guide.steps.map(s => `
+        <li class="modal-guide-step">
+          <span class="guide-step-number">${s.step}</span>
+          <div style="flex: 1;">
+            <div>${s.text}</div>
+            ${s.code ? `
+              <div class="code-block-wrapper">
+                <button type="button" class="copy-code-btn" data-code="${escapeHtml(s.code)}" aria-label="Copy command">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy
+                </button>
+                <code>${escapeHtml(s.code)}</code>
+              </div>
+            ` : ''}
+          </div>
+        </li>
+      `).join('');
+
+      guideHtml = `
+        <div class="modal-guide-section">
+          <span class="modal-guide-badge">${escapeHtml(app.guide.badge || 'Setup Guide')}</span>
+          <h4 class="modal-guide-name">${escapeHtml(app.guide.title)}</h4>
+          ${app.guide.summary ? `<p class="modal-guide-summary">${escapeHtml(app.guide.summary)}</p>` : ''}
+          <ul class="modal-guide-steps">
+            ${stepsHtml}
+          </ul>
+        </div>
+      `;
+    }
+
     modalBody.innerHTML = `
       <div class="modal-section-title">Overview</div>
       <p>${escapeHtml(app.overview)}</p>
       ${featuresHtml}
+      ${guideHtml}
     `;
+
+    // Bind copy buttons inside modal
+    modalBody.querySelectorAll('.copy-code-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const code = btn.getAttribute('data-code');
+        copyToClipboard(code);
+      });
+    });
 
     // Action Links
     modalLinks.innerHTML = app.links.map(l => `
@@ -331,7 +317,7 @@
     modalBackdrop.classList.remove('open');
     modalBackdrop.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
-    if (window.location.hash.startsWith('#app-')) {
+    if (window.location.hash.startsWith('#app-') || window.location.hash.startsWith('#guide-')) {
       history.pushState('', document.title, window.location.pathname + window.location.search);
     }
   }
@@ -380,11 +366,12 @@
     if (hash && hash.startsWith('#app-')) {
       const appId = hash.replace('#app-', '');
       openModal(appId);
-    } else if (hash && hash.startsWith('#guide-')) {
-      const guideEl = document.getElementById(hash.substring(1));
-      if (guideEl) {
-        setTimeout(() => guideEl.scrollIntoView({ behavior: 'smooth' }), 100);
-      }
+    } else if (hash === '#guide-dns') {
+      openModal('dnsecure');
+    } else if (hash === '#guide-cloudflare') {
+      openModal('cloudflare-one');
+    } else if (hash === '#guide-twingate') {
+      openModal('twingate');
     }
   }
 

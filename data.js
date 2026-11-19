@@ -1,4 +1,4 @@
-// Auto-generated recommendations and guides data
+// Auto-generated recommendations data
 window.ROUFS_DATA = {
   apps: [
   {
@@ -53,7 +53,8 @@ window.ROUFS_DATA = {
         "label": "Extremely Lightweight",
         "text": "Low resource overhead, running smoothly even on micro-servers with just 512MB to 1GB of RAM."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "aloha-browser",
@@ -95,7 +96,8 @@ window.ROUFS_DATA = {
         "label": "Theatre & VR Mode",
         "text": "Watch videos in a distraction-free cinematic player or connect VR headsets for a virtual cinema environment."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "cloudflare-one",
@@ -145,7 +147,38 @@ window.ROUFS_DATA = {
         "label": "Zero Cost for Personal & Family Use",
         "text": "Cloudflare provides full enterprise Zero Trust features completely free for up to 50 active user accounts."
       }
-    ]
+    ],
+    "guide": {
+      "title": "Cloudflare Zero Trust Team Setup for Free Unlimited VPN",
+      "badge": "Step-by-Step Setup Guide",
+      "summary": "Unlock uncapped WireGuard VPN routing and custom DNS gateway filtering across devices via Cloudflare’s enterprise edge network.",
+      "steps": [
+        {
+          "step": 1,
+          "text": "Sign up for a free team account at the <a href=\"https://one.dash.cloudflare.com\" target=\"_blank\" rel=\"noopener\">Cloudflare Zero Trust Dashboard</a>."
+        },
+        {
+          "step": 2,
+          "text": "Choose your free team domain name (e.g., <code>yourname.cloudflareaccess.com</code>) under the Free 50-user tier."
+        },
+        {
+          "step": 3,
+          "text": "Navigate to <strong>Settings &rarr; WARP Client &rarr; Device enrollment rules</strong> and add your authorized personal email domain."
+        },
+        {
+          "step": 4,
+          "text": "Download and launch the <strong>1.1.1.1: Faster Internet</strong> client on your phone or laptop."
+        },
+        {
+          "step": 5,
+          "text": "Open <strong>Settings &rarr; Account &rarr; Login with Cloudflare Zero Trust</strong>, enter your team domain, and authenticate via one-time PIN."
+        },
+        {
+          "step": 6,
+          "text": "Toggle the connection switch to route all device traffic through Cloudflare’s global Anycast mesh."
+        }
+      ]
+    }
   },
   {
     "id": "dnsecure",
@@ -179,7 +212,35 @@ window.ROUFS_DATA = {
         "label": "Low System Overhead",
         "text": "Operates at the OS networking layer with zero background battery consumption."
       }
-    ]
+    ],
+    "guide": {
+      "title": "System-Wide Ad-Free iOS Setup via Encrypted DNS",
+      "badge": "Step-by-Step Setup Guide",
+      "summary": "Suppress in-app advertisements, telemetry trackers, and web banners across iOS without battery drain using DNS-over-HTTPS (DoH).",
+      "steps": [
+        {
+          "step": 1,
+          "text": "Install <strong>DNSecure</strong> from the official Apple App Store."
+        },
+        {
+          "step": 2,
+          "text": "Open the app, tap the <strong>+</strong> icon, and select <strong>DNS-over-HTTPS</strong>."
+        },
+        {
+          "step": 3,
+          "text": "Enter the official AdGuard DNS endpoint:",
+          "code": "https://dns.adguard-dns.com/dns-query"
+        },
+        {
+          "step": 4,
+          "text": "Save the configuration and navigate to <strong>iOS Settings &rarr; General &rarr; VPN & Device Management &rarr; DNS</strong>."
+        },
+        {
+          "step": 5,
+          "text": "Select <strong>DNSecure</strong> as your active resolver. All queries are now securely filtered at the OS kernel layer."
+        }
+      ]
+    }
   },
   {
     "id": "everythingmoe",
@@ -193,7 +254,12 @@ window.ROUFS_DATA = {
     ],
     "pricing": "100% Free / Community-Maintained",
     "pricingType": "free",
-    "links": [],
+    "links": [
+      {
+        "label": "everythingmoe.com",
+        "url": "https://everythingmoe.com"
+      }
+    ],
     "overview": "EverythingMoe is widely recognized as the single best and most comprehensive anime website index on the internet. It acts as an authoritative, continuously updated directory that catalogs and reviews virtually every major anime streaming website, torrent tracker, direct download portal, manga reader, and light novel repository.",
     "features": [
       {
@@ -216,7 +282,8 @@ window.ROUFS_DATA = {
         "label": "Community-Vetted & Unbiased",
         "text": "Free from sponsored site placements, ensuring honest and objective rankings based strictly on user experience."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "immortalwrt",
@@ -269,7 +336,8 @@ window.ROUFS_DATA = {
         "label": "Wide Architecture Compatibility",
         "text": "First-class support for x86/64 soft routers (like Lenovo Tiny M720q/M920q, Protectli, Topton), Raspberry Pi, NanoPi, and popular Wi-Fi 6 routers."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "ish-shell",
@@ -315,7 +383,8 @@ window.ROUFS_DATA = {
         "label": "Custom Keyboard & Touch Navigation",
         "text": "Extended keyboard bar including Tab, Esc, Control, and arrow keys designed for touchscreens."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "lap",
@@ -371,7 +440,8 @@ window.ROUFS_DATA = {
         "label": "Culling & Organization",
         "text": "Built-in duplicate image detection, perceptual similarity grouping, ratings, smart albums, hierarchical tags, and photo editing/collages."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "localsend",
@@ -425,7 +495,8 @@ window.ROUFS_DATA = {
         "label": "Batch Transfers & Directory Trees",
         "text": "Send full folders and bulk image galleries without compression or metadata stripping."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "lyra",
@@ -463,7 +534,8 @@ window.ROUFS_DATA = {
         "label": "Clean Player Interface",
         "text": "Modern, distraction-free playback controls with full lock-screen media controls."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "potatso",
@@ -505,7 +577,8 @@ window.ROUFS_DATA = {
         "label": "Battery & Memory Efficient",
         "text": "Lightweight background packet tunnel using native iOS NetworkExtension framework."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "protube",
@@ -543,7 +616,8 @@ window.ROUFS_DATA = {
         "label": "Minimalist Interface",
         "text": "Reduces feed clutter, hides algorithmic distractions, and focuses purely on high-resolution video playback."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "rootshell",
@@ -600,7 +674,8 @@ window.ROUFS_DATA = {
         "label": "Sandboxed Local Shell & Git",
         "text": "Built-in local shell with curl, jq, vim, and native Git client on iOS/iPadOS, and full local shell execution on macOS."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "snapseed",
@@ -638,7 +713,8 @@ window.ROUFS_DATA = {
         "label": "Clean & Professional",
         "text": "Completely free utility without artificial export limits or promotional popups."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "tube-pip",
@@ -676,7 +752,8 @@ window.ROUFS_DATA = {
         "label": "Ad Suppression Support",
         "text": "Pairs seamlessly with encrypted DNS solutions (such as AdGuard DNS via DNSecure) for ad-free playback."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "tubemax",
@@ -714,7 +791,8 @@ window.ROUFS_DATA = {
         "label": "Built-in Ad Suppression",
         "text": "Clean viewing experience with automatic avoidance of disruptive mid-roll ads."
       }
-    ]
+    ],
+    "guide": null
   },
   {
     "id": "twingate",
@@ -731,7 +809,7 @@ window.ROUFS_DATA = {
       "Linux"
     ],
     "pricing": "Free Starter Tier (Up to 5 Users, Unlimited Devices)",
-    "pricingType": "freemium",
+    "pricingType": "foss",
     "links": [
       {
         "label": "App Store Listing",
@@ -764,7 +842,35 @@ window.ROUFS_DATA = {
         "label": "Native Single Sign-On (SSO)",
         "text": "Authenticate securely via Google, GitHub, or Microsoft with hardware MFA/passkey support."
       }
-    ]
+    ],
+    "guide": {
+      "title": "Twingate Homelab Setup (Zero Open Router Ports)",
+      "badge": "Step-by-Step Setup Guide",
+      "summary": "Securely access internal servers, NAS units, and self-hosted dashboards from anywhere with zero port-forwarding or public IP exposure.",
+      "steps": [
+        {
+          "step": 1,
+          "text": "Create a free starter account at <a href=\"https://www.twingate.com\" target=\"_blank\" rel=\"noopener\">Twingate.com</a> (up to 5 users)."
+        },
+        {
+          "step": 2,
+          "text": "Create a Remote Network named <strong>Home Network</strong> and generate a new <strong>Connector</strong> token."
+        },
+        {
+          "step": 3,
+          "text": "Deploy the connector on any always-on home machine (Raspberry Pi, mini PC, NAS) using Docker:",
+          "code": "docker run -d --sysctl net.ipv4.ping_group_range=\"0 2147483647\" \\\n  --env TENANT_URL=\"https://yournetwork.twingate.com\" \\\n  --env ACCESS_TOKEN=\"your_connector_access_token\" \\\n  --env REFRESH_TOKEN=\"your_connector_refresh_token\" \\\n  --name twingate-connector \\\n  --restart unless-stopped \\\n  twingate/connector:latest"
+        },
+        {
+          "step": 4,
+          "text": "Define your internal resources in the dashboard (e.g., <code>192.168.1.100</code> or <code>homelab.local</code>)."
+        },
+        {
+          "step": 5,
+          "text": "Install the Twingate app on your mobile device or laptop. Authenticate once to access private home resources anywhere seamlessly."
+        }
+      ]
+    }
   },
   {
     "id": "vllo",
@@ -802,102 +908,8 @@ window.ROUFS_DATA = {
         "label": "Built-in Royalty-Free Asset Library",
         "text": "Includes access to copyright-cleared background music tracks, sound effects, and transitions."
       }
-    ]
-  }
-],
-  guides: [
-  {
-    "id": "guide-dns",
-    "title": "System-Wide Ad-Free iOS Setup via Encrypted DNS",
-    "badge": "Guide A",
-    "category": "iOS Network Optimization",
-    "summary": "Suppress in-app advertisements, telemetry trackers, and web banners across iOS without battery drain using DNS-over-HTTPS (DoH).",
-    "steps": [
-      {
-        "step": 1,
-        "text": "Install <strong>DNSecure</strong> from the official Apple App Store."
-      },
-      {
-        "step": 2,
-        "text": "Open the app, tap the <strong>+</strong> icon, and select <strong>DNS-over-HTTPS</strong>."
-      },
-      {
-        "step": 3,
-        "text": "Enter the official AdGuard DNS endpoint:",
-        "code": "https://dns.adguard-dns.com/dns-query"
-      },
-      {
-        "step": 4,
-        "text": "Save the configuration and navigate to <strong>iOS Settings &rarr; General &rarr; VPN & Device Management &rarr; DNS</strong>."
-      },
-      {
-        "step": 5,
-        "text": "Select <strong>DNSecure</strong> as your active resolver. Queries are now securely filtered at the OS kernel layer."
-      }
-    ]
-  },
-  {
-    "id": "guide-cloudflare",
-    "title": "Cloudflare Zero Trust Team Setup for Free Unlimited VPN",
-    "badge": "Guide B",
-    "category": "Zero Trust & Anycast VPN",
-    "summary": "Unlock uncapped WireGuard VPN routing and custom DNS gateway filtering across devices via Cloudflare’s enterprise edge network.",
-    "steps": [
-      {
-        "step": 1,
-        "text": "Sign up for a free team account at the <a href=\"https://one.dash.cloudflare.com\" target=\"_blank\" rel=\"noopener\">Cloudflare Zero Trust Dashboard</a>."
-      },
-      {
-        "step": 2,
-        "text": "Choose your free team domain name (e.g., <code>yourname.cloudflareaccess.com</code>) under the Free 50-user tier."
-      },
-      {
-        "step": 3,
-        "text": "Navigate to <strong>Settings &rarr; WARP Client &rarr; Device enrollment rules</strong> and add your authorized personal email domain."
-      },
-      {
-        "step": 4,
-        "text": "Download and launch the <strong>1.1.1.1: Faster Internet</strong> client on your phone or laptop."
-      },
-      {
-        "step": 5,
-        "text": "Open <strong>Settings &rarr; Account &rarr; Login with Cloudflare Zero Trust</strong>, enter your team domain, and authenticate via one-time PIN."
-      },
-      {
-        "step": 6,
-        "text": "Toggle the connection switch to route all device traffic through Cloudflare’s global Anycast mesh."
-      }
-    ]
-  },
-  {
-    "id": "guide-twingate",
-    "title": "Twingate Homelab Setup (Zero Open Router Ports)",
-    "badge": "Guide C",
-    "category": "Private Homelab Access",
-    "summary": "Securely access internal servers, NAS units, and self-hosted dashboards from anywhere with zero port-forwarding or public IP exposure.",
-    "steps": [
-      {
-        "step": 1,
-        "text": "Create a free starter account at <a href=\"https://www.twingate.com\" target=\"_blank\" rel=\"noopener\">Twingate.com</a> (up to 5 users)."
-      },
-      {
-        "step": 2,
-        "text": "Create a Remote Network named <strong>Home Network</strong> and generate a new <strong>Connector</strong> token."
-      },
-      {
-        "step": 3,
-        "text": "Deploy the connector on any always-on home machine (Raspberry Pi, mini PC, NAS) using Docker:",
-        "code": "docker run -d --sysctl net.ipv4.ping_group_range=\"0 2147483647\" \\\n  --env TENANT_URL=\"https://yournetwork.twingate.com\" \\\n  --env ACCESS_TOKEN=\"your_connector_access_token\" \\\n  --env REFRESH_TOKEN=\"your_connector_refresh_token\" \\\n  --name twingate-connector \\\n  --restart unless-stopped \\\n  twingate/connector:latest"
-      },
-      {
-        "step": 4,
-        "text": "Define your internal resources in the dashboard (e.g., <code>192.168.1.100</code> or <code>homelab.local</code>)."
-      },
-      {
-        "step": 5,
-        "text": "Install the Twingate app on your mobile device or laptop. Authenticate once to access private home resources anywhere seamlessly."
-      }
-    ]
+    ],
+    "guide": null
   }
 ],
   meta: {

@@ -527,49 +527,18 @@ button {
 }
 
 /* ==========================================================================
-   Setup Guides Section (At Bottom of Page)
+   Embedded Setup Guides (Inside App / Service Popup)
    ========================================================================== */
 
-.guides-section {
-  margin-top: 3.5rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--border-subtle);
-}
-
-.guides-header {
-  margin-bottom: 1.5rem;
-}
-
-.guides-title {
-  font-size: 1.35rem;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.02em;
-  margin-bottom: 0.3rem;
-}
-
-.guides-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-secondary);
-}
-
-.guides-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.25rem;
-}
-
-.guide-card {
-  background: var(--bg-surface);
+.modal-guide-section {
+  margin-top: 1.25rem;
+  padding: 1rem;
+  background: var(--bg-subtle);
   border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  box-shadow: var(--shadow-tile);
+  border-radius: var(--radius-sm);
 }
 
-.guide-pill {
+.modal-guide-badge {
   font-size: 0.7rem;
   font-weight: 700;
   color: var(--primary);
@@ -577,35 +546,34 @@ button {
   border: 1px solid #bae6fd;
   padding: 0.15rem 0.5rem;
   border-radius: var(--radius-full);
-  align-self: flex-start;
-  margin-bottom: 0.65rem;
+  display: inline-block;
+  margin-bottom: 0.4rem;
   text-transform: uppercase;
 }
 
-.guide-name {
-  font-size: 1.05rem;
+.modal-guide-name {
+  font-size: 0.95rem;
   font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   line-height: 1.3;
 }
 
-.guide-summary {
-  font-size: 0.84rem;
+.modal-guide-summary {
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
   line-height: 1.45;
 }
 
-.guide-steps-list {
+.modal-guide-steps {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  margin-top: auto;
+  gap: 0.7rem;
 }
 
-.guide-step-item {
+.modal-guide-step {
   display: flex;
   gap: 0.65rem;
   font-size: 0.82rem;
@@ -925,6 +893,10 @@ button {
 
 .app-footer a {
   color: var(--text-secondary);
+  padding: 0.35rem 0.45rem;
+  display: inline-block;
+  min-height: 38px;
+  line-height: 26px;
 }
 
 .app-footer a:hover {
@@ -975,10 +947,6 @@ button {
 
   .tile-category {
     font-size: 0.68rem;
-  }
-
-  .guides-grid {
-    grid-template-columns: 1fr;
   }
 }
 

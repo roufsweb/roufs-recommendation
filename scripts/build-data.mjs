@@ -26,6 +26,53 @@ const sectionMapping = {
   'everythingmoe': { section: 'web-indices', category: 'Media & Anime Directory', subcategory: 'Web Media Indices' }
 };
 
+// Setup guides attached directly to their respective app/service popup
+const appGuides = {
+  'dnsecure': {
+    title: 'System-Wide Ad-Free iOS Setup via Encrypted DNS',
+    badge: 'Step-by-Step Setup Guide',
+    summary: 'Suppress in-app advertisements, telemetry trackers, and web banners across iOS without battery drain using DNS-over-HTTPS (DoH).',
+    steps: [
+      { step: 1, text: 'Install <strong>DNSecure</strong> from the official Apple App Store.' },
+      { step: 2, text: 'Open the app, tap the <strong>+</strong> icon, and select <strong>DNS-over-HTTPS</strong>.' },
+      { step: 3, text: 'Enter the official AdGuard DNS endpoint:', code: 'https://dns.adguard-dns.com/dns-query' },
+      { step: 4, text: 'Save the configuration and navigate to <strong>iOS Settings &rarr; General &rarr; VPN & Device Management &rarr; DNS</strong>.' },
+      { step: 5, text: 'Select <strong>DNSecure</strong> as your active resolver. All queries are now securely filtered at the OS kernel layer.' }
+    ]
+  },
+  'cloudflare-one': {
+    title: 'Cloudflare Zero Trust Team Setup for Free Unlimited VPN',
+    badge: 'Step-by-Step Setup Guide',
+    summary: 'Unlock uncapped WireGuard VPN routing and custom DNS gateway filtering across devices via Cloudflare’s enterprise edge network.',
+    steps: [
+      { step: 1, text: 'Sign up for a free team account at the <a href="https://one.dash.cloudflare.com" target="_blank" rel="noopener">Cloudflare Zero Trust Dashboard</a>.' },
+      { step: 2, text: 'Choose your free team domain name (e.g., <code>yourname.cloudflareaccess.com</code>) under the Free 50-user tier.' },
+      { step: 3, text: 'Navigate to <strong>Settings &rarr; WARP Client &rarr; Device enrollment rules</strong> and add your authorized personal email domain.' },
+      { step: 4, text: 'Download and launch the <strong>1.1.1.1: Faster Internet</strong> client on your phone or laptop.' },
+      { step: 5, text: 'Open <strong>Settings &rarr; Account &rarr; Login with Cloudflare Zero Trust</strong>, enter your team domain, and authenticate via one-time PIN.' },
+      { step: 6, text: 'Toggle the connection switch to route all device traffic through Cloudflare’s global Anycast mesh.' }
+    ]
+  },
+  'twingate': {
+    title: 'Twingate Homelab Setup (Zero Open Router Ports)',
+    badge: 'Step-by-Step Setup Guide',
+    summary: 'Securely access internal servers, NAS units, and self-hosted dashboards from anywhere with zero port-forwarding or public IP exposure.',
+    steps: [
+      { step: 1, text: 'Create a free starter account at <a href="https://www.twingate.com" target="_blank" rel="noopener">Twingate.com</a> (up to 5 users).' },
+      { step: 2, text: 'Create a Remote Network named <strong>Home Network</strong> and generate a new <strong>Connector</strong> token.' },
+      { step: 3, text: 'Deploy the connector on any always-on home machine (Raspberry Pi, mini PC, NAS) using Docker:', code: `docker run -d --sysctl net.ipv4.ping_group_range="0 2147483647" \\
+  --env TENANT_URL="https://yournetwork.twingate.com" \\
+  --env ACCESS_TOKEN="your_connector_access_token" \\
+  --env REFRESH_TOKEN="your_connector_refresh_token" \\
+  --name twingate-connector \\
+  --restart unless-stopped \\
+  twingate/connector:latest` },
+      { step: 4, text: 'Define your internal resources in the dashboard (e.g., <code>192.168.1.100</code> or <code>homelab.local</code>).' },
+      { step: 5, text: 'Install the Twingate app on your mobile device or laptop. Authenticate once to access private home resources anywhere seamlessly.' }
+    ]
+  }
+};
+
 const apps = files.map(file => {
   const id = file.replace('.md', '');
   const raw = fs.readFileSync(path.join(appsDir, file), 'utf-8');
@@ -49,7 +96,7 @@ const apps = files.map(file => {
   const pricingRaw = pricingMatch ? pricingMatch[1].trim() : 'Free';
 
   // Extract links
-  const linksRawMatch = raw.match(/\*\*(?:Download|Official Resources):\*\*\s*(.+)/i);
+  const linksRawMatch = raw.match(/\*\*(?:Download|Official Resources|Official Portal):\*\*\s*(.+)/i);
   const linksList = [];
   if (linksRawMatch) {
     const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
@@ -72,7 +119,6 @@ const apps = files.map(file => {
       const trimmed = l.trim();
       if (trimmed.startsWith('* ') || trimmed.startsWith('- ')) {
         const item = trimmed.replace(/^[\*\-]\s+/, '');
-        // Split bold label and text if available: **Label:** Description
         const boldMatch = item.match(/^\*\*([^*]+)\:\*\*\s*(.*)$/);
         if (boldMatch) {
           features.push({ label: boldMatch[1].trim(), text: boldMatch[2].trim() });
@@ -86,7 +132,7 @@ const apps = files.map(file => {
   // Pricing badge classification
   let pricingType = 'free';
   const pLower = pricingRaw.toLowerCase();
-  if (pLower.includes('open source') || pLower.includes('foss') || pLower.includes('gpl')) {
+  if (pLower.includes('open source') || pLower.includes('foss') || pLower.includes('gpl') || pLower.includes('mit')) {
     pricingType = 'foss';
   } else if (pLower.includes('freemium') || pLower.includes('starter') || pLower.includes('free core')) {
     pricingType = 'freemium';
@@ -108,67 +154,14 @@ const apps = files.map(file => {
     pricingType,
     links: linksList,
     overview,
-    features
+    features,
+    guide: appGuides[id] || null
   };
 });
 
-// Guides data
-const guides = [
-  {
-    id: 'guide-dns',
-    title: 'System-Wide Ad-Free iOS Setup via Encrypted DNS',
-    badge: 'Guide A',
-    category: 'iOS Network Optimization',
-    summary: 'Suppress in-app advertisements, telemetry trackers, and web banners across iOS without battery drain using DNS-over-HTTPS (DoH).',
-    steps: [
-      { step: 1, text: 'Install <strong>DNSecure</strong> from the official Apple App Store.' },
-      { step: 2, text: 'Open the app, tap the <strong>+</strong> icon, and select <strong>DNS-over-HTTPS</strong>.' },
-      { step: 3, text: 'Enter the official AdGuard DNS endpoint:', code: 'https://dns.adguard-dns.com/dns-query' },
-      { step: 4, text: 'Save the configuration and navigate to <strong>iOS Settings &rarr; General &rarr; VPN & Device Management &rarr; DNS</strong>.' },
-      { step: 5, text: 'Select <strong>DNSecure</strong> as your active resolver. Queries are now securely filtered at the OS kernel layer.' }
-    ]
-  },
-  {
-    id: 'guide-cloudflare',
-    title: 'Cloudflare Zero Trust Team Setup for Free Unlimited VPN',
-    badge: 'Guide B',
-    category: 'Zero Trust & Anycast VPN',
-    summary: 'Unlock uncapped WireGuard VPN routing and custom DNS gateway filtering across devices via Cloudflare’s enterprise edge network.',
-    steps: [
-      { step: 1, text: 'Sign up for a free team account at the <a href="https://one.dash.cloudflare.com" target="_blank" rel="noopener">Cloudflare Zero Trust Dashboard</a>.' },
-      { step: 2, text: 'Choose your free team domain name (e.g., <code>yourname.cloudflareaccess.com</code>) under the Free 50-user tier.' },
-      { step: 3, text: 'Navigate to <strong>Settings &rarr; WARP Client &rarr; Device enrollment rules</strong> and add your authorized personal email domain.' },
-      { step: 4, text: 'Download and launch the <strong>1.1.1.1: Faster Internet</strong> client on your phone or laptop.' },
-      { step: 5, text: 'Open <strong>Settings &rarr; Account &rarr; Login with Cloudflare Zero Trust</strong>, enter your team domain, and authenticate via one-time PIN.' },
-      { step: 6, text: 'Toggle the connection switch to route all device traffic through Cloudflare’s global Anycast mesh.' }
-    ]
-  },
-  {
-    id: 'guide-twingate',
-    title: 'Twingate Homelab Setup (Zero Open Router Ports)',
-    badge: 'Guide C',
-    category: 'Private Homelab Access',
-    summary: 'Securely access internal servers, NAS units, and self-hosted dashboards from anywhere with zero port-forwarding or public IP exposure.',
-    steps: [
-      { step: 1, text: 'Create a free starter account at <a href="https://www.twingate.com" target="_blank" rel="noopener">Twingate.com</a> (up to 5 users).' },
-      { step: 2, text: 'Create a Remote Network named <strong>Home Network</strong> and generate a new <strong>Connector</strong> token.' },
-      { step: 3, text: 'Deploy the connector on any always-on home machine (Raspberry Pi, mini PC, NAS) using Docker:', code: `docker run -d --sysctl net.ipv4.ping_group_range="0 2147483647" \\
-  --env TENANT_URL="https://yournetwork.twingate.com" \\
-  --env ACCESS_TOKEN="your_connector_access_token" \\
-  --env REFRESH_TOKEN="your_connector_refresh_token" \\
-  --name twingate-connector \\
-  --restart unless-stopped \\
-  twingate/connector:latest` },
-      { step: 4, text: 'Define your internal resources in the dashboard (e.g., <code>192.168.1.100</code> or <code>homelab.local</code>).' },
-      { step: 5, text: 'Install the Twingate app on your mobile device or laptop. Authenticate once to access private home resources anywhere seamlessly.' }
-    ]
-  }
-];
-
-const jsContent = `// Auto-generated recommendations and guides data
+const jsContent = `// Auto-generated recommendations data
 window.ROUFS_DATA = {
   apps: ${JSON.stringify(apps, null, 2)},
-  guides: ${JSON.stringify(guides, null, 2)},
   meta: {
     title: "Rouf's Recommendations",
     domain: "recomendation.roufsweb.com",
@@ -180,4 +173,4 @@ window.ROUFS_DATA = {
 `;
 
 fs.writeFileSync('data.js', jsContent, 'utf-8');
-console.log(`Generated data.js successfully with ${apps.length} apps and ${guides.length} guides.`);
+console.log(`Generated data.js successfully with ${apps.length} apps (guides attached to specific popups).`);
