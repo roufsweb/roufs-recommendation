@@ -1,6 +1,5 @@
 // ==========================================================================
-// Rouf's Recommendations - Main Application Logic
-// Lightweight, accessible, zero-dependency client logic
+// Rouf's Recommendations - Native Tile UI Logic
 // ==========================================================================
 
 (function () {
@@ -12,7 +11,7 @@
   let searchQuery = '';
 
   // DOM Elements
-  const appsGrid = document.getElementById('apps-grid');
+  const tilesGrid = document.getElementById('tiles-grid');
   const guidesGrid = document.getElementById('guides-grid');
   const searchInput = document.getElementById('search-input');
   const searchClearBtn = document.getElementById('search-clear-btn');
@@ -39,10 +38,14 @@
 
   let toastTimeout = null;
 
+  function escapeRegex(string) {
+    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
   // Initialize
   function init() {
     updateCategoryCounts();
-    renderCards();
+    renderTiles();
     renderGuides();
     bindEvents();
     checkUrlHash();
@@ -69,13 +72,6 @@
       const el = document.getElementById(`count-${key}`);
       if (el) el.textContent = counts[key];
     });
-
-    const statTotal = document.getElementById('stat-total-apps');
-    if (statTotal) statTotal.textContent = data.apps.length;
-  }
-
-  function escapeRegex(string) {
-    return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   }
 
   // Filter & Scoring Logic
@@ -152,91 +148,61 @@
     return matched.map(m => m.app);
   }
 
-  // Render App Cards
-  function renderCards() {
+  // Render App Tiles
+  function renderTiles() {
     const filtered = getFilteredApps();
-    appsGrid.innerHTML = '';
+    tilesGrid.innerHTML = '';
 
-    resultsCountText.textContent = `Showing ${filtered.length} of ${data.apps.length} recommendations`;
+    resultsCountText.textContent = `${filtered.length} Recommendation${filtered.length === 1 ? '' : 's'}`;
 
     if (filtered.length === 0) {
       emptyState.style.display = 'block';
-      appsGrid.style.display = 'none';
+      tilesGrid.style.display = 'none';
       return;
     }
 
     emptyState.style.display = 'none';
-    appsGrid.style.display = 'grid';
+    tilesGrid.style.display = 'grid';
 
     const frag = document.createDocumentFragment();
 
     filtered.forEach(app => {
-      const card = document.createElement('article');
-      card.className = 'app-card';
-      card.setAttribute('data-id', app.id);
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'button');
-      card.setAttribute('aria-label', `View details for ${app.title}`);
+      const tile = document.createElement('article');
+      tile.className = 'app-tile';
+      tile.setAttribute('data-id', app.id);
+      tile.setAttribute('tabindex', '0');
+      tile.setAttribute('role', 'button');
+      tile.setAttribute('aria-label', `View details for ${app.title}`);
 
-      // Badge Class
       let badgeClass = 'badge-free';
       if (app.pricingType === 'foss') badgeClass = 'badge-foss';
       else if (app.pricingType === 'freemium') badgeClass = 'badge-freemium';
 
-      // Primary Link
-      const primaryLink = app.links.length > 0 ? app.links[0] : null;
-
-      card.innerHTML = `
-        <div class="card-top">
-          <img src="${escapeHtml(app.icon)}" alt="${escapeHtml(app.title)} Icon" class="card-icon" loading="lazy">
-          <div class="card-header-info">
-            <h3 class="card-title">${escapeHtml(app.title)}</h3>
-            <div class="card-subcategory">${escapeHtml(app.category)}</div>
-            <div class="card-badges">
-              <span class="badge ${badgeClass}">${escapeHtml(app.pricing)}</span>
-            </div>
-          </div>
+      tile.innerHTML = `
+        <div class="tile-icon-wrap">
+          <img src="${escapeHtml(app.icon)}" alt="${escapeHtml(app.title)} Icon" class="tile-icon" loading="lazy">
         </div>
-        <div class="card-body">
-          <p class="card-overview">${escapeHtml(app.overview)}</p>
-          <div class="card-platforms">
-            ${app.platforms.map(p => `<span class="platform-tag">${escapeHtml(p)}</span>`).join('')}
+        <div class="tile-info">
+          <h3 class="tile-title">${escapeHtml(app.title)}</h3>
+          <div class="tile-category">${escapeHtml(app.category)}</div>
+          <div class="tile-badges">
+            <span class="badge ${badgeClass}">${escapeHtml(app.pricing)}</span>
           </div>
-        </div>
-        <div class="card-footer">
-          <div class="card-links">
-            ${primaryLink ? `
-              <a href="${escapeHtml(primaryLink.url)}" target="_blank" rel="noopener" class="btn-card-link" onclick="event.stopPropagation();">
-                <span>${escapeHtml(primaryLink.label)}</span>
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                  <polyline points="15 3 21 3 21 9"></polyline>
-                  <line x1="10" y1="14" x2="21" y2="3"></line>
-                </svg>
-              </a>
-            ` : ''}
-          </div>
-          <button type="button" class="btn-view-details" aria-label="View details">
-            <span>Details</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </button>
         </div>
       `;
 
-      card.addEventListener('click', () => openModal(app.id));
-      card.addEventListener('keydown', (e) => {
+      tile.addEventListener('click', () => openModal(app.id));
+      tile.addEventListener('keydown', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();
           openModal(app.id);
         }
       });
 
-      frag.appendChild(card);
+      frag.appendChild(tile);
     });
 
-    appsGrid.appendChild(frag);
+    tilesGrid.appendChild(frag);
   }
 
   // Render Technical Guides
@@ -297,7 +263,7 @@
     });
   }
 
-  // Open Details Modal
+  // Open Details Modal / Sheet
   function openModal(appId) {
     const app = data.apps.find(a => a.id === appId);
     if (!app) return;
@@ -314,7 +280,7 @@
 
     modalBadges.innerHTML = `
       <span class="badge ${badgeClass}">${escapeHtml(app.pricing)}</span>
-      ${app.platforms.map(p => `<span class="platform-tag">${escapeHtml(p)}</span>`).join('')}
+      ${app.platforms.map(p => `<span class="badge badge-free">${escapeHtml(p)}</span>`).join('')}
     `;
 
     // Body
@@ -338,9 +304,9 @@
       ${featuresHtml}
     `;
 
-    // Footer Links
+    // Action Links
     modalLinks.innerHTML = app.links.map(l => `
-      <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener" class="btn-card-link">
+      <a href="${escapeHtml(l.url)}" target="_blank" rel="noopener" class="btn-modal-link">
         <span>${escapeHtml(l.label)}</span>
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -358,7 +324,7 @@
     modalCloseBtn.focus();
   }
 
-  // Close Details Modal
+  // Close Details Modal / Sheet
   function closeModal() {
     modalBackdrop.classList.remove('open');
     modalBackdrop.setAttribute('aria-hidden', 'true');
@@ -427,7 +393,7 @@
       searchQuery = e.target.value;
       if (searchQuery.trim().length > 0) {
         searchClearBtn.style.display = 'flex';
-        // Auto-switch to All Tools if a restrictive category was active
+        // Auto-switch to All if another category was active
         if (currentCategory !== 'all') {
           currentCategory = 'all';
           categoryTabs.querySelectorAll('.category-pill').forEach(b => {
@@ -439,7 +405,7 @@
       } else {
         searchClearBtn.style.display = 'none';
       }
-      renderCards();
+      renderTiles();
     });
 
     // Clear search
@@ -448,7 +414,7 @@
       searchQuery = '';
       searchClearBtn.style.display = 'none';
       searchInput.focus();
-      renderCards();
+      renderTiles();
     });
 
     // Keyboard shortcut '/' to search
@@ -474,7 +440,7 @@
       btn.classList.add('active');
       btn.setAttribute('aria-selected', 'true');
       currentCategory = btn.getAttribute('data-category');
-      renderCards();
+      renderTiles();
     });
 
     // Platform Chips
@@ -485,7 +451,7 @@
       platformChips.querySelectorAll('.platform-chip').forEach(c => c.classList.remove('active'));
       chip.classList.add('active');
       currentPlatform = chip.getAttribute('data-platform');
-      renderCards();
+      renderTiles();
     });
 
     // Reset Filters Button
@@ -505,7 +471,7 @@
         c.classList.toggle('active', c.getAttribute('data-platform') === 'all');
       });
 
-      renderCards();
+      renderTiles();
     });
 
     // Modal Close
@@ -516,7 +482,7 @@
 
     // Back to top scroll tracking
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
+      if (window.scrollY > 300) {
         backToTopBtn.classList.add('visible');
       } else {
         backToTopBtn.classList.remove('visible');
