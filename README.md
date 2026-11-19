@@ -22,7 +22,7 @@ Every entry is evaluated for real-world usability, privacy, cost efficiency, and
   - [1.3 Photo & Video Creation](#13-photo--video-creation)
   - [1.4 Terminal & Developer Tools](#14-terminal--developer-tools)
   - [1.5 Proxy & Network Utilities](#15-proxy--network-utilities)
-- [Section 2: Cross-Platform File Transfer](#section-2-cross-platform-file-transfer)
+- [Section 2: Cross-Platform Tools & Utilities](#section-2-cross-platform-tools--utilities)
 - [Section 3: Remote Access, Zero Trust & Unlimited VPN](#section-3-remote-access-zero-trust--unlimited-vpn)
 - [Section 4: Homelab, Control Panels & Router Firmware](#section-4-homelab-control-panels--router-firmware)
 - [Section 5: Web Resources, Streaming & Media Indices](#section-5-web-resources-streaming--media-indices)
@@ -84,12 +84,13 @@ A curated collection of top-tier iOS apps directly available on the official App
 
 ---
 
-## Section 2: Cross-Platform File Transfer
+## Section 2: Cross-Platform Tools & Utilities
 
-Seamless, local-area network data sharing across dissimilar operating systems without cloud latency or third-party servers.
+Seamless local-first utilities, file transfer, and media management across operating systems without cloud dependencies, subscriptions, or external servers.
 
 | Icon | Software Name | Supported Platforms | Key Capabilities | Pricing | Links |
 | :---: | :--- | :--- | :--- | :---: | :---: |
+| [<img src="https://raw.githubusercontent.com/julyx10/lap/main/docs/public/icon.png" width="50" style="border-radius:10px;" alt="Lap">](https://github.com/julyx10/lap) | **Lap** | macOS, Windows, Linux | Local-first photo manager for massive libraries (100k+ items). Features on-device AI natural language search, facial recognition, duplicate cleanup, and XMP metadata without cloud uploads. | Free & Open Source | [GitHub](https://github.com/julyx10/lap)<br>[Website](https://julyx10.github.io/lap/)<br>[Documentation](apps/lap.md) |
 | [<img src="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/ef/88/39/ef88398c-00e7-8733-37bb-4aacb1f9043d/AppIcon-0-0-1x_U007emarketing-0-8-0-85-220.png/100x100bb.jpg" width="50" style="border-radius:10px;" alt="LocalSend">](https://apps.apple.com/us/app/localsend/id1661733229) | **LocalSend** | iOS, Android, Windows, macOS, Linux | Open-source AirDrop alternative. Sends files, directories, and clipboard text between devices over local Wi-Fi with end-to-end TLS encryption and uncapped LAN speeds. | Free & Open Source | [App Store](https://apps.apple.com/us/app/localsend/id1661733229)<br>[Website](https://localsend.org)<br>[Documentation](apps/localsend.md) |
 
 ---

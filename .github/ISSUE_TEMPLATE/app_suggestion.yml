@@ -26,7 +26,7 @@ body:
       description: Which section does this recommendation belong to?
       options:
         - iOS Application
-        - Cross-Platform File Transfer
+        - Cross-Platform Tools & Utilities
         - Remote Access & Zero Trust VPN
         - Homelab, Server & Router OS
         - Web Resource & Media Index
